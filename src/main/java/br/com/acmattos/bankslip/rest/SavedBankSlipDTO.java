@@ -31,10 +31,10 @@ class SavedBankSlipDTO extends AbstractBankSlipDTO {
 
    /**
     * Keep it private (Lombok Builder generation)!
-    * @param id
-    * @param dueDate
-    * @param totalInCents
-    * @param customer
+    * @param id Identifier of this bank slip.
+    * @param dueDate Due date of this bank slip.
+    * @param totalInCents Total in cents of this bank slip.
+    * @param customer Customer's name of this bank slip.
     */
    @Builder
    private SavedBankSlipDTO(UUID id, Date dueDate, BigDecimal totalInCents,
@@ -53,7 +53,7 @@ class SavedBankSlipDTO extends AbstractBankSlipDTO {
       Assert.notNull(entities, "entities can't be null!");
 
       List<SavedBankSlipDTO> dtos = new ArrayList<>();
-      entities.stream().forEach(entity -> dtos.add(toDTO(entity)));
+      entities.forEach(entity -> dtos.add(toDTO(entity)));
 
       return dtos;
    }

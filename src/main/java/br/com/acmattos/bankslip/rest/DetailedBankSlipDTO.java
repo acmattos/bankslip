@@ -39,12 +39,12 @@ class DetailedBankSlipDTO extends AbstractBankSlipDTO {
    
    /**
     * Keep it private (Lombok Builder generation)!
-    * @param id
-    * @param dueDate
-    * @param totalInCents
-    * @param customer
-    * @param fine
-    * @param status
+    * @param id Identifier of this bank slip.
+    * @param dueDate Due date of this bank slip.
+    * @param totalInCents Total in cents of this bank slip.
+    * @param customer Customer's name of this bank slip.
+    * @param fine Fine of this bank slip.
+    * @param status Status of this bank slip.
     */
    @Builder
    private DetailedBankSlipDTO(UUID id, Date dueDate, BigDecimal totalInCents,

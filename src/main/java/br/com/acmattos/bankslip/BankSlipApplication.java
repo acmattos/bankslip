@@ -14,8 +14,8 @@ public class BankSlipApplication extends SpringBootServletInitializer {
     /**
      * Allows this application to run properly.
      *
-     * @param args not used
-     * @throws Exception
+     * @param args not used.
+     * @throws Exception in case of general failure.
      */
    public static void main(String[] args) throws Exception {
       new SpringApplicationBuilder(BankSlipApplication.class).run(args);

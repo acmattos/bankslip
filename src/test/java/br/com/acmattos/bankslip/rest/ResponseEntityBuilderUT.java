@@ -14,13 +14,13 @@ import static org.junit.Assert.*;
  * ResponseEntityBuilder Unit Tests.
  * @author acmattos
  */
+@SuppressWarnings("unchecked")
 public class ResponseEntityBuilderUT extends UnitTest {
 
    @Test
    public void builder() {
       ResponseEntityBuilder builder = ResponseEntityBuilder.builder();
       assertNotNull("Builder can't be null!", builder);
-      assertTrue("Must be an instance of ", builder instanceof ResponseEntityBuilder);
    }
 
    @Test(expected = IllegalArgumentException.class)
@@ -179,6 +179,7 @@ public class ResponseEntityBuilderUT extends UnitTest {
    @Test
    public void build_bodyNullEntity() {
       ResponseEntityBuilder builder = ResponseEntityBuilder.builder();
+      @SuppressWarnings("unchecked")
       ResponseEntity responseEntity = builder.body(null).build();
       assertNotNull("Can't be null!", responseEntity);
       assertTrue("Must be empty!", responseEntity.getHeaders().isEmpty());

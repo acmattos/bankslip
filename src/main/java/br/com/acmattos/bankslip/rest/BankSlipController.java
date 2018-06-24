@@ -23,7 +23,7 @@ import java.util.UUID;
  */
 @RestController
 @RequestMapping("/bankslips")
-public class BankSlipController {
+class BankSlipController {
    private static final Log LOGGER =
       LogFactory.getLog(BankSlipController.class);
    private static final String UUID_PATTERN =
@@ -266,6 +266,7 @@ public class BankSlipController {
     * @param id Bank slip identifier.
     * @param builder Response entity builder.
     */
+   @SuppressWarnings("unchecked")
    private void doFindById(UUID id, ResponseEntityBuilder builder) {
       if(!id.toString().matches(UUID_PATTERN)){
          LOGGER.info("Response: BAD_REQUEST");

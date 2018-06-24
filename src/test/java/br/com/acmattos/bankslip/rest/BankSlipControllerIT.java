@@ -17,7 +17,6 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 import static br.com.acmattos.bankslip.rest.BankSlipControllerUT.RESOURCE_URL;
 import static org.junit.Assert.*;
@@ -42,16 +41,14 @@ public class BankSlipControllerIT extends IntegrationTest {
    
    private MockMvc mvc;
    private BankSlip entity;
-   private Date dueDate;
    
    @Before
    public void setUp() throws Exception {
       this.mvc = MockMvcBuilders.standaloneSetup(controller)
          .setControllerAdvice(new BankSlipExceptionHandlerAdvice())
          .build();
-      this.dueDate = new Date();
       this.entity = BankSlip.builder()
-         .dueDate(this.dueDate)
+         .dueDate(new Date())
          .totalInCents(new BigDecimal("100000"))
          .customer("Customer")
          .status(BankSlipStatusEnum.PENDING)

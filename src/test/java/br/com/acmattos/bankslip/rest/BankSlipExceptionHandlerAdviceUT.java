@@ -60,6 +60,7 @@ public class BankSlipExceptionHandlerAdviceUT extends UnitTest {
    
    @Test
    public void handleMethodArgumentTypeMismatchException() throws Exception {
+      @SuppressWarnings("ConstantConditions")
       MethodArgumentTypeMismatchException e =
          new MethodArgumentTypeMismatchException(null, null, null, null, null);
    
