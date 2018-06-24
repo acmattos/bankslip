@@ -215,7 +215,7 @@ This is a sample of a request body used in endpoint:
 - spring-boot-starter-web (Spring Boot, Core, MVC, Log, Tomcat);
 - spring-boot-starter-test (Hamcrest, JUnit, Mockito);
 - lombok;
-- de.flapdoodle.embed.mongo;
+- de.flapdoodle.embed.mongo (Embedded MongoDB);
 - springfox-swagger2;
 - springfox-swagger-ui.
 
