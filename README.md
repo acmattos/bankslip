@@ -339,30 +339,35 @@ documents.
 
 `BankSlipStatusEnum`: Defines possible values of a BankSlip status. 
 
-`BankSlipUUIDGeneratorEventListener`: Listen to `BeforeConvert` events, 
+`BankSlipUUIDGeneratorEventListener`: Listen to `BeforeConvertEvent` events, 
 detecting if some entity needs to get a UUID.
 
 #### br.com.acmattos.bankslip.rest
 
 Contains all artifacts responsible for dealing with HTTP communication. They can
 be devided into two groups: Data Transfer Objects (carry data from API and to 
-API); Communication Processors (get requests, processing then generating 
-appropiated responses).
+API); Communication Processors (get requests, processing them and generating 
+appropriate responses).
 
 `AbstractBankSlipDTO`: Base class for BankSlip data.
 
-`DetailedBankSlipDTO`: Holds detailed BankSlip stored data (including fine if 
+`DetailedBankSlipDTO`: Holds detailed BankSlip stored data (including, fine if 
 applied) returned from API after a *GET* request together with UUID.
+
 `NewBankSlipDTO`: Holds new BankSlip data sent to API for database storing after
 a *POST* request.
+
 `SavedBankSlipDTO`: Holds short version of BankSlip stored data returned from 
 API after a *GET* request.
+
 `UpdatedBankSlipStatusDTO`: Holds BankSlip Status sent to API for pay or cancel
 a specific BankSlip (defined by its UUID) after a *PUT* request.
 
 `BankSlipController`: Exposes BankSlip APIs endpoints and processes all 
 requests.
+
 `BankSlipExceptionHandlerAdvice`: Detects some exceptional conditions and 
 generates responses.
+
 `ResponseEntityBuilder`: Helper class that aids `BankSlipController` and 
 `BankSlipExceptionHandlerAdvice` to prepare the response to be sent to client.
