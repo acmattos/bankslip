@@ -302,8 +302,10 @@ writing tedious methods.
 BankSlip API is fully tested. JUnit automates both Unit and Integration tests. 
 Mockito helps you to mock complex object's behaviour, allowing you to cover many
 flows of your code design. Hamcrest provides matchers that can be combined to 
-create flexible expressions of intent. Embedded MongoDB provides a platform 
-neutral way for running a MongoDB instance during Integration Tests.
+create flexible expressions of intent. [Embedded MongoDB]
+(https://github.com/flapdoodle-oss/de.flapdoodle.embed.mongo 
+"Organization Flapdoodle OSS") provides a platform neutral way for running a 
+MongoDB instance during Integration Tests.
 
 BankSlip API is heavily tested using unit tests because they are lighter than 
 integration tests (IT). IT's are left to:
