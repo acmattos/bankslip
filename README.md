@@ -22,7 +22,7 @@ and de following sections will describe its requirements.
 This endpoint will receive a valid bank slip and store it on database, to be 
 consumed by the API itself. 
 
-**Endpoint:** *POST* http://address:port/rest/bankslips
+**Endpoint:** *POST* http://localhost:8080/rest/bankslips
 
 **Format:**
 
@@ -67,7 +67,7 @@ This is a sample of a valid bank slip JSON (request body) object:
 
 This endpoint will list all available bank slips. 
 
-**Endpoint:** *GET* http://address:port/rest/bankslips
+**Endpoint:** *GET* http://localhost:8080/rest/bankslips
 
 **Format:**
 
@@ -111,7 +111,7 @@ a fine for it, in case of delay.
 * Up to 10 days of delay: 0.5% of fine (Simple Interest)
 * Beyond 10 days of delay: 1% of fine (Simple Interest)
 
-**Endpoint:** *GET* http://address:port/rest/bankslips/{id}
+**Endpoint:** *GET* http://localhost:8080/rest/bankslips/{id}
 
 **Format:**
 
@@ -141,14 +141,11 @@ This is a sample of a response (code 200) from this endpoint:
 | :---: | ------------- | -------------------------------------------- |
 | 500   | iserror       | Could not find all bank slips: CAUSE_MESSAGE |
 
-
-
-
 ### Pay a Bank Slip Endpoint
 
 This endpoint will pay a bank slip defined by an ID.
 
-**Endpoint:** *PUT* http://address:port/rest/bankslips/{id}
+**Endpoint:** *PUT* http://localhost:8080/rest/bankslips/{id}
 
 **Format:**
 
@@ -177,7 +174,7 @@ This is a sample of a request body used in endpoint:
 
 This endpoint will cancel a bank slip defined by an ID.
 
-**Endpoint:** *PUT* http://address:port/rest/bankslips/{id}
+**Endpoint:** *PUT* http://localhost:8080/rest/bankslips/{id}
 
 **Format:**
 
@@ -282,9 +279,9 @@ This is a sample of a request body used in endpoint:
     
 ### Architecture
      
-The application was built on top of Spring Boot Framework. As a REST API 
-application, a WEB module was the right choice to accomodate `@RestController`s 
-and all HTTP features through an embedded Tomcat Container.     
+The application was built on top of Spring Boot Framework. Designed as a REST 
+API application, a WEB module was the best choice to accomodate  
+`@RestController`s and all HTTP features through an embedded Tomcat Container.
 
 The database chosen to persist `BankSlip API` data was `MongoDB`: a perfect 
 choice to accomodate Bank Slip Documents that comes back and forth as JSON 
@@ -306,11 +303,12 @@ flows of your code design. Hamcrest provides matchers that can be combined to
 create flexible expressions of intent. Embedded MongoDB provides a platform 
 neutral way for running a MongoDB instance during Integration Tests.
 
-BankSlip API is heavily based on unit tests because they are lighter than 
-integration tests (IT). ITs are left to test UUID assignment, on bank slip 
-document creation, and to check endpoint's point-to-point communication (
-request received from client, request processed, database manipulation, response
-produced to client) and application state during the whole process.
+BankSlip API is heavily tested using unit tests because they are lighter than 
+integration tests (IT). IT's are left to:
+- Test UUID assignment, on bank slip's document creation
+- Test endpoint's point-to-point communication (request received from client, 
+  request processed, database manipulation, response produced to client) 
+- Test application's state during P2P communication.
  
 ### API Packages
 
@@ -335,9 +333,12 @@ Contains all artifacts responsible to manipulate MongoDB Documents from and to
 database.
 
 `BankSlip`: Entity that corresponds to a MongoBD bank slip document.
+
 `BankSlipRepository`: Repository interface used to manipulate database 
 documents.
+
 `BankSlipStatusEnum`: Defines possible values of a BankSlip status. 
+
 `BankSlipUUIDGeneratorEventListener`: Listen to `BeforeConvert` events, 
 detecting if some entity needs to get a UUID.
 
@@ -349,6 +350,7 @@ API); Communication Processors (get requests, processing then generating
 appropiated responses).
 
 `AbstractBankSlipDTO`: Base class for BankSlip data.
+
 `DetailedBankSlipDTO`: Holds detailed BankSlip stored data (including fine if 
 applied) returned from API after a *GET* request together with UUID.
 `NewBankSlipDTO`: Holds new BankSlip data sent to API for database storing after
