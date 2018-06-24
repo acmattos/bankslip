@@ -47,13 +47,15 @@ This is a sample of a valid bank slip JSON (request body) object:
 (*) All fields are required!
 
 **Response Messages:**
+
 | code  | Message                                                        | 
 | :---: | -------------------------------------------------------------- | 
 | 201   | Bankslip created                                               | 
 | 400   | Bankslip not provided in the request body                      | 
 | 422   | Invalid bankslip provided. Check HEADERS for more information! | 
 
-**Response Header Messages:**    
+**Response Header Messages:** 
+
 | code  | name          | value                                                      |
 | :---: | ------------- | ---------------------------------------------------------- |
 | 201   | location      | /rest/bankslips/CREATED_BANK_SLIP_ID                       |
