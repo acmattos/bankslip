@@ -308,9 +308,10 @@ MongoDB instance during Integration Tests.
 
 BankSlip API is heavily tested using unit tests because they are lighter than 
 integration tests (IT). IT's are left to:
-- Test UUID assignment, on bank slip's document creation
-- Test endpoint's point-to-point communication (request received from client, 
-  request processed, database manipulation, response produced to client) 
+- Test UUID assignment, on bank slip's document creation;
+- Test endpoint's point-to-point (P2P) communication (request received from  
+  client, request processed, database manipulation, response produced to 
+  client); 
 - Test application's state during P2P communication.
  
 ### API Packages
